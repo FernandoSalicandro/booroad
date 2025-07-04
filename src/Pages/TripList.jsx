@@ -36,7 +36,8 @@ const TripList = () => {
                 {viaggio ? (
                     (
                         <>
-                            <h1 className="mb-4"> {viaggio.citta}</h1>
+                            <h1 className="mb-4"> {viaggio.citta} - {viaggio.dataInizio}</h1>
+                            <img src={`../${viaggio.poster}`} alt="poster" className="mb-3" width={200} height={200} />
                             <h2 className="mb-4 text-muted">{viaggio.attivita}</h2>
                         </>
 

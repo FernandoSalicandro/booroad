@@ -3,8 +3,8 @@ const viaggi = [
     id: "v1",
     attivita: "Tour enogastronomico",
     citta: "Firenze",
-    dataInizio: "2025-09-15",
-    dataFine: "2025-09-20",
+    dataInizio: "15-09-2025",
+    dataFine: "20-09-2025",
     poster : 'img/BooroadFirenze.png',
     numeriEmergenza: {
       polizia: "113",
@@ -23,8 +23,8 @@ const viaggi = [
     id: "v2",
     attivita: "Escursione sulle Dolomiti",
     citta: "Cortina d'Ampezzo",
-    dataInizio: "2025-07-10",
-    dataFine: "2025-07-15",
+    dataInizio: "10-07-2025",
+    dataFine: "15-07-2025",
     poster: 'img/BooroadCortina.png',
     numeriEmergenza: {
       polizia: "112",
@@ -44,8 +44,8 @@ const viaggi = [
     id: "v3",
     attivita: "Visita ai musei",
     citta: "Roma",
-    dataInizio: "2025-08-05",
-    dataFine: "2025-08-09",
+    dataInizio: "05-08-2025",
+    dataFine: "09-08-2025",
     poster: 'img/BooroadRoma.png',
     numeriEmergenza: {
       polizia: "112",
@@ -65,8 +65,8 @@ const viaggi = [
     id: "v4",
     attivita: "Trekking sull'Etna",
     citta: "Catania",
-    dataInizio: "2025-07-18",
-    dataFine: "2025-07-20",
+    dataInizio: "18-07-2025",
+    dataFine: "20-07-2025",
     poster: 'img/BooroadCatania.png',
     numeriEmergenza: {
       polizia: "112",
