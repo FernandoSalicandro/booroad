@@ -87,7 +87,6 @@ h1:after {
 
 li {
     font-weight: 600;
-    padding: 1rem;
     transition: background-color 0.3s ease;
 }
 
