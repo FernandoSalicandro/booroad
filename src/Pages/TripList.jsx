@@ -1,21 +1,21 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ViaggiContext } from "../GlobalContext/ViaggiContext.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 import ModaleViaggiatore from "../Components/ModaleViaggiatore.jsx";
-import viaggi from "../datas/Viaggi.js";
 
 const TripList = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const viaggio = viaggi.find(v => v.id.toString() === id);
+    const { viaggi } = useContext(ViaggiContext); // Usa il context invece di importare i dati
+    const viaggio = viaggi.find(v => v.id === id); // Rimuovi toString() se gli ID sono già stringhe
     const [partecipanti, setPartecipanti] = useState(viaggio ? viaggio.partecipanti : []);
     const [cercaPartecipante, setCercaPartecipante] = useState("");
     const [showModal, setShowModal] = useState(false);
     const [utenteSelezionato, setUtenteSelezionato] = useState(null);
 
-
     const filtroRicercaUtente = partecipanti.filter(partecipante =>
         `${partecipante.nome} ${partecipante.cognome}`.toLowerCase().trim().includes(cercaPartecipante.toLowerCase().trim())
-    ); {/*Aggiunto trim per la gestione degli spazi*/ }
+    );
 
     const apriModal = (partecipante) => {
         setUtenteSelezionato(partecipante);
@@ -29,34 +29,24 @@ const TripList = () => {
 
     return (
         <>
-
-           
-                <img
-                    src={`../${viaggio.poster}`}
-                    alt="poster"
-                    className="mb-3 image-fluid banner-img"
-                    style={{ width: '100vw', height: '50vh' }}
-                />
-          
-
+            <img
+                src={`../${viaggio?.poster}`}
+                alt="poster"
+                className="mb-3 image-fluid banner-img"
+                style={{ width: '100vw', height: '50vh' }}
+            />
 
             <div className="container my-5">
-
                 <button className="btn btn-secondary mb-3" onClick={() => navigate(-1)}>
                     ← Torna Indietro
                 </button>
                 {viaggio ? (
-                    (
-                        <>
-                            <h1 className="mb-4"> {viaggio.citta} - {viaggio.dataInizio} / {viaggio.dataFine}</h1>
-                            <img src={`../${viaggio.poster}`} alt="poster" className="mb-3" width={200} height={200} />
-                            <h2 className="mb-4 text-muted">{viaggio.attivita}</h2>
-                        </>
-
-                    )
+                    <>
+                        <h1 className="mb-4"> {viaggio.citta} - {viaggio.dataInizio} / {viaggio.dataFine}</h1>
+                        <img src={`../${viaggio.poster}`} alt="poster" className="mb-3" width={200} height={200} />
+                        <h2 className="mb-4 text-muted">{viaggio.attivita}</h2>
+                    </>
                 ) : <h1 className="mb-4">Viaggio Non Trovato</h1>}
-
-
 
                 <input
                     type="text"
@@ -82,7 +72,6 @@ const TripList = () => {
                 </ul>
             </div>
 
-            {/*Implementato Modale come Componente per pulizia codice*/}
             {utenteSelezionato && showModal && (
                 <ModaleViaggiatore utente={utenteSelezionato} apriModal={apriModal} chiudiModal={chiudiModal} />
             )}
