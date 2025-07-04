@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import ModaleViaggiatore from "../Components/ModaleViaggiatore.jsx";
 import viaggi from "../datas/Viaggi.js";
 
 const TripList = () => {
@@ -68,47 +69,9 @@ const TripList = () => {
                 </ul>
             </div>
 
-
+            {/*Implementato Modale come Componente per pulizia codice*/}
             {utenteSelezionato && showModal && (
-                <div
-                    className="modal show d-block"
-                    tabIndex="-1"
-                    style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
-                >
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title">
-                                    {utenteSelezionato.nome} {utenteSelezionato.cognome}
-                                </h5>
-                                <button type="button" className="btn-close" onClick={chiudiModal}></button>
-                            </div>
-                            <div className="modal-body">
-                                <p>Codice Fiscale: {utenteSelezionato.codiceFiscale}</p>
-                                <p>Email: {utenteSelezionato.email}</p>
-
-                                <p className="d-flex justify-content-between align-items-center">
-                                    Numero telefono: {utenteSelezionato.telefono}
-                                    <a href={`tel:${utenteSelezionato.telefono}`} className="btn btn-success m-3 call-now px-3">
-                                        Chiama ora
-                                    </a>
-                                </p>
-
-                                <p className="d-flex justify-content-between align-items-center">
-                                    Contatto Emergenza: {utenteSelezionato.contattoEmergenza}
-                                    <a href={`tel:${utenteSelezionato.contattoEmergenza}`} className="btn btn-danger m-3 call-now px-3">
-                                        Chiama ora
-                                    </a>
-                                </p>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" onClick={chiudiModal}>
-                                    Chiudi
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <ModaleViaggiatore utente={utenteSelezionato} apriModal={apriModal} chiudiModal={chiudiModal} />
             )}
         </>
     );
