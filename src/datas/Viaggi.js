@@ -80,7 +80,9 @@ const viaggi = [
       { id: "p4", nome: "Alberto", cognome: "Morelli", codiceFiscale: "MRLALB93F21H501E", email: "alberto.morelli@example.com", telefono: "+393388880111", contattoEmergenza: "+393488880111" },
       { id: "p5", nome: "Elena", cognome: "D'Amico", codiceFiscale: "DMCLNE91B31H501A", email: "elena.damico@example.com", telefono: "+393381111444", contattoEmergenza: "+393481111444" }
     ]
-  }
+  },
 ];
 
 export default viaggi;
+
+

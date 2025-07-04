@@ -1,9 +1,10 @@
-import Viaggi from '../datas/Viaggi.js';
 import ViaggiCard from '../Components/ViaggiCard.jsx';
-import { useState} from 'react';
+import {useContext, useState} from 'react';
+import {ViaggiContext} from '../GlobalContext/ViaggiContext.jsx';
+
 export default function Homepage() {
 
-    const [viaggi, setViaggi] = useState(Viaggi);
+    const {viaggi} = useContext(ViaggiContext);
     const [cercaViaggio, setCercaViaggio] = useState('');
 
     //filtro ricerca viaggi - Fernando
