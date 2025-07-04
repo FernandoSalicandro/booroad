@@ -42,7 +42,7 @@ export default function AggiungiViaggio() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+
         const viaggioCompleto = {
             ...nuovoViaggio,
             id: `v${Date.now()}`,
@@ -151,13 +151,17 @@ export default function AggiungiViaggio() {
                             onChange={handleNumeriEmergenzaChange}
                         />
                     </div>
+                    <div className="wrapper">
 
-                    <button className="btn btn-primary mx-2">
-                        Aggiungi Partecipanti
-                    </button>
-                    <button type="submit" className="btn btn-success">
-                        Crea Viaggio
-                    </button>
+                        <button className="btn btn-primary">
+                            Aggiungi Partecipanti
+                        </button>
+                        <button type="submit" className="btn btn-success">
+                            Crea Viaggio
+                        </button>
+
+                    </div>
+
                 </form>
             </div>
         </>
