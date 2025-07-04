@@ -1,21 +1,137 @@
+/* Stili generali */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Stili per i titoli */
+h1 {
+    color: #2c3e50;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+ h1:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: #007bff;
+}
+
+.container h1:after{
+    display: none;
+}
+
+/* Stili per le card */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Stili per i form */
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.25);
+    border-color: #007bff;
+}
+
+/* Stili per i bottoni */
+.btn {
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    border: none;
+}
+
+.btn-success {
+    background: linear-gradient(45deg, #28a745, #1e7e34);
+    border: none;
+}
+
+
 li {
     font-weight: 600;
+    padding: 1rem;
+    transition: background-color 0.3s ease;
 }
 
 .call-now {
-    padding:0.4rem;
-    width: 120px;
+    padding: 0.6rem;
+    width: 130px;
+    border-radius: 25px;
+    font-weight: 600;
+    text-align: center;
 }
 
 .search-trip {
     width: 300px;
-    padding: 5px;
-    border: 1px solid var(--bs-primary);
+    padding: 12px;
+    border: 2px solid #007bff;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
 }
 
+.search-trip:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.25);
+    width: 320px;
+}
 
-@media screen and (min-width : 780px) {
+/* Banner image responsive */
+.banner-img {
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+@media screen and (min-width: 780px) {
     .banner-img {
         display: none;
     }
+}
+
+/* Lista gruppi */
+.list-group-item {
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+    border-left: 4px solid #007bff;
+    background-color: #f8f9fa;
+}
+
+/* Container personalizzato */
+.container {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }

@@ -152,6 +152,9 @@ export default function AggiungiViaggio() {
                         />
                     </div>
 
+                    <button className="btn btn-primary mx-2">
+                        Aggiungi Partecipanti
+                    </button>
                     <button type="submit" className="btn btn-success">
                         Crea Viaggio
                     </button>
