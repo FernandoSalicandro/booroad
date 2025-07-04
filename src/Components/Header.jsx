@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 export default function Header() {
     return (
         <nav className="navbar position-sticky top-0 start-0 z-3 navbar-expand-lg  bg-primary" data-bs-theme="dark">
@@ -9,10 +11,10 @@ export default function Header() {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="/home">Home</a>
+                            <NavLink className="nav-link" aria-current="page" to={"/home"}>Home</NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="/aggiungiviaggio">Aggiungi Viaggio</a>
+                            <NavLink className="nav-link" aria-current="page" to={'/aggiungiviaggio'}>Aggiungi Viaggio</NavLink>
                         </li>
                     </ul>
                 </div>
