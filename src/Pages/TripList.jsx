@@ -11,9 +11,10 @@ const TripList = () => {
     const [showModal, setShowModal] = useState(false);
     const [utenteSelezionato, setUtenteSelezionato] = useState(null);
 
+
     const filtroRicercaUtente = partecipanti.filter(partecipante =>
-        `${partecipante.nome} ${partecipante.cognome}`.toLowerCase().includes(cercaPartecipante.toLowerCase())
-    );
+        `${partecipante.nome} ${partecipante.cognome}`.toLowerCase().trim().includes(cercaPartecipante.toLowerCase().trim())
+    ); {/*Aggiunto trim per la gestione degli spazi*/ }
 
     const apriModal = (partecipante) => {
         setUtenteSelezionato(partecipante);
@@ -31,9 +32,17 @@ const TripList = () => {
                 <button className="btn btn-secondary mb-3" onClick={() => navigate(-1)}>
                     ← Torna Indietro
                 </button>
+                {viaggio ? (
+                    (
+                        <>
+                            <h1 className="mb-4"> {viaggio.citta}</h1>
+                            <h2 className="mb-4 text-muted">{viaggio.attivita}</h2>
+                        </>
 
-                <h1 className="mb-4">{viaggio ? viaggio.citta : "Viaggio non trovato"}</h1>
-                <h2 className="mb-4 text-muted">{viaggio ? viaggio.attivita : ""}</h2>
+                    )
+                ) : <h1 className="mb-4">Viaggio Non Trovato</h1>}
+
+
 
                 <input
                     type="text"
@@ -59,7 +68,7 @@ const TripList = () => {
                 </ul>
             </div>
 
-            
+
             {utenteSelezionato && showModal && (
                 <div
                     className="modal show d-block"
