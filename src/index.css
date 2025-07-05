@@ -5,6 +5,8 @@ body {
 }
 
 
+
+
 /*utilities*/
 .wrapper {
     display: flex;
@@ -153,4 +155,13 @@ li {
     width: 100px;
     background-color: green;
     border-radius: 5px;
+}
+
+.filtroSearch {
+    padding: 0.4rem
+}
+.filtro-data {
+    padding: 0.3rem;
+    border-radius: 5px;
+    border : 1px solid var(--bs-primary)
 }
