@@ -191,8 +191,7 @@ li {
 }
 
 .search-container {
-    display: grid;
-    place-content: center;
+    display: block;
 }
 
 @media screen and (max-width: 768px) {
@@ -228,6 +227,11 @@ li {
 @media screen and (max-width: 340px) {
     .call-now {
         width: 150px;
+    }
+
+    .search-container {
+        display: grid;
+        place-content: center;
     }
 }
 
