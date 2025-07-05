@@ -52,13 +52,17 @@ export default function Homepage() {
             <h1 className="text-center my-5">TUTTI I VIAGGI</h1>
             <div className="container">
                 {/*aggiungo filtro ricerca viaggi - Fernando*/}
-                <input
+                <div className="search-container">
+                    <input
                     type="text"
                     className='mb-3 search-trip'
                     id='search'
                     placeholder='Cerca Viaggio...'
                     value={cercaViaggio}
                     onChange={(e) => setCercaViaggio(e.target.value)} />
+                </div>
+                
+                
                 <hr />
 
                 {/*filtro per data*/}

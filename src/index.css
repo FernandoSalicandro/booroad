@@ -190,6 +190,11 @@ li {
 
 }
 
+.search-container {
+    display: grid;
+    place-content: center;
+}
+
 @media screen and (max-width: 768px) {
 
     .home-filter-group {
