@@ -3,7 +3,7 @@ const viaggi = [
     id: "v1",
     attivita: "Tour enogastronomico",
     citta: "Firenze",
-    dataInizio: "15-09-2025",
+    dataInizio: "05-07-2025",
     dataFine: "20-09-2025",
     poster : 'img/BooroadFirenze.png',
     numeriEmergenza: {
@@ -23,7 +23,7 @@ const viaggi = [
     id: "v2",
     attivita: "Escursione sulle Dolomiti",
     citta: "Cortina d'Ampezzo",
-    dataInizio: "10-07-2025",
+    dataInizio: "05-07-2025",
     dataFine: "15-07-2025",
     poster: 'img/BooroadCortina.png',
     numeriEmergenza: {

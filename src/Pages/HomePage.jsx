@@ -9,6 +9,7 @@ export default function Homepage() {
     const [cercaViaggio, setCercaViaggio] = useState('');
     const [showFiltroSearch, setShowFiltroSearch] = useState(false);
     const [calendar, setCalendar] = useState('');
+    const [soloInCorso, setSoloInCorso] = useState(false);
 
     //funzione per trasformare il formato del date picker
 
@@ -18,10 +19,31 @@ export default function Homepage() {
         return formatted
     }
 
-    //filtro ricerca viaggi - Fernando
-    const filtroRicercaViaggio = viaggi.filter(viaggio => viaggio.citta.toLowerCase().includes(cercaViaggio.toLowerCase()))
-    const filtroPerData = viaggi.filter(viaggio => viaggio.dataInizio === formatDatePicker(calendar)
-);
+    const parseDate = (str) => {
+        const [day, month, year] = str.split("-");
+        return new Date(`${year}-${month}-${day}`);
+    };
+
+    const isViaggioInCorso = (viaggio) => {
+        const oggi = new Date();
+        const inizio = parseDate(viaggio.dataInizio);
+        const fine = parseDate(viaggio.dataFine);
+        return oggi >= inizio && oggi <= fine;
+    };
+
+
+    //filtro ricerca-data-incorso viaggi - Fernando
+    const viaggiFiltrati = viaggi
+        .filter((viaggio) =>
+            viaggio.citta.toLowerCase().includes(cercaViaggio.toLowerCase()) &&
+            (calendar ? viaggio.dataInizio === formatDatePicker(calendar) : true) &&
+            (soloInCorso ? isViaggioInCorso(viaggio) : true)
+        )
+        .map((viaggio) => ({
+            ...viaggio,
+            inCorso: isViaggioInCorso(viaggio),
+        }));
+
 
 
 
@@ -40,7 +62,7 @@ export default function Homepage() {
                 <hr />
 
                 {/*filtro per data*/}
-                <div className='d-flex justify-content-start align-items-center mb-3'>
+                <div className='home-filter-group mb-3'>
 
                     <button className="filtroSearch btn btn-primary" onClick={() => setShowFiltroSearch(!showFiltroSearch)}>Filtra per Data</button>
                     <AnimatePresence></AnimatePresence>
@@ -49,36 +71,26 @@ export default function Homepage() {
 
                             type='date'
                             id='date'
-                            className='filtro-data mx-1'
+                            className='filtro-data'
                             initial={{ opacity: 0, x: -50 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -50 }}
                             transition={{ duration: 0.5 }}
                             value={calendar}
-                            onChange={(e) => { setCalendar(e.target.value)}} />
+                            onChange={(e) => { setCalendar(e.target.value) }} />
                     )}
+                    <button className={`btn ${soloInCorso ? "btn-warning" : "btn-outline-primary"}`}
+                        onClick={() => setSoloInCorso(!soloInCorso)}>Solo In Corso </button>
                 </div>
                 <hr />
 
-                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                    {calendar
-                        ? filtroPerData.map(curViaggio => (
-                            <div className="col" key={curViaggio.id}>
-                                <ViaggiCard viaggio={curViaggio} />
-                            </div>
-                        ))
-                        : cercaViaggio.length > 0
-                            ? filtroRicercaViaggio.map(curViaggio => (
-                                <div className="col" key={curViaggio.id}>
-                                    <ViaggiCard viaggio={curViaggio} />
-                                </div>
-                            ))
-                            : viaggi.map(curViaggio => (
-                                <div className="col" key={curViaggio.id}>
-                                    <ViaggiCard viaggio={curViaggio} />
-                                </div>
-                            ))
-                    }
+                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+                    {viaggiFiltrati.map((curViaggio) => (
+                        <div className="col" key={curViaggio.id}>
+                            <ViaggiCard viaggio={curViaggio} />
+                        </div>
+                    ))}
+
 
 
                 </div>

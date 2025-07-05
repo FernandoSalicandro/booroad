@@ -157,11 +157,52 @@ li {
     border-radius: 5px;
 }
 
-.filtroSearch {
-    padding: 0.4rem
-}
+
 .filtro-data {
-    padding: 0.3rem;
+
+    padding: 12px 24px;
     border-radius: 5px;
     border : 1px solid var(--bs-primary)
+}
+
+.badge-incorso {
+
+    background-color: #4dc96a;
+    border-radius: 2px;
+    padding-left: 5px;
+}
+
+.card-header p {
+    margin: 0;
+}
+
+.card-header {
+    height: 75px;
+}
+
+.home-filter-group {
+    display : flex;
+    justify-content: start;
+    gap:10px;
+    align-items: center;
+    
+    
+
+}
+
+@media screen and (max-width: 768px) {
+    .home-filter-group {
+    display : flex;
+    flex-direction: column;
+    gap:10px;
+    align-items: start;
+    
+}
+
+.home-filter-group button {
+    width: 100%;
+}
+.filtro-data {
+    width: 100%;
+}
 }
