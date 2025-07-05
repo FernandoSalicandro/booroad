@@ -159,10 +159,10 @@ li {
 
 
 .filtro-data {
-
+    cursor: pointer;
     padding: 12px 24px;
     border-radius: 5px;
-    border : 1px solid var(--bs-primary)
+    border: 1px solid var(--bs-primary)
 }
 
 .badge-incorso {
@@ -181,12 +181,12 @@ li {
 }
 
 .home-filter-group {
-    display : flex;
+    display: flex;
     justify-content: start;
-    gap:10px;
+    gap: 10px;
     align-items: center;
-    
-    
+
+
 
 }
 
@@ -197,19 +197,20 @@ li {
 @media screen and (max-width: 768px) {
 
     .home-filter-group {
-    display : flex;
-    flex-direction: column;
-    gap:10px;
-    align-items: start;
-    
-}
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: start;
 
-.home-filter-group button {
-    width: 100%;
-}
-.filtro-data {
-    width: 100%;
-}
+    }
+
+    .home-filter-group button {
+        width: 100%;
+    }
+
+    .filtro-data {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 430px) {
@@ -224,6 +225,16 @@ li {
         width: 130px;
     }
 }
+
+@media screen and (max-width: 380px) {
+
+
+    .search-container {
+        display: grid;
+        place-content: center;
+    }
+}
+
 @media screen and (max-width: 340px) {
     .call-now {
         width: 150px;
@@ -234,6 +245,3 @@ li {
         place-content: center;
     }
 }
-
-
- 

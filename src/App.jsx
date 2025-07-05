@@ -5,6 +5,7 @@ import GuestLayout from './Layout/GuestLayout.jsx';
 import { ViaggiProvider } from './GlobalContext/ViaggiContext.jsx';
 import TripList from './Pages/TripList.jsx';
 import AggiungiViaggio from './Pages/AggiungiViaggio.jsx';
+import ScrollTop from './Components/ScrollTop.jsx';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <ViaggiProvider>
 
         <BrowserRouter>
+        <ScrollTop />
           <GuestLayout />
           <Routes>
             <Route path="/" element={<Homepage />} />

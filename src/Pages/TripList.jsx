@@ -33,7 +33,7 @@ const TripList = () => {
                 src={`../${viaggio?.poster}`}
                 alt="poster"
                 className="mb-3 image-fluid banner-img"
-                style={{ width: '100vw', height: '50vh' }}
+                style={{ width: '100vw'}}
             />
 
             <div className="container my-5">
