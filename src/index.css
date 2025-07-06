@@ -45,7 +45,7 @@ h1:after {
 /* Stili per le card */
 .card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: none;
+    border: 1px solid var(-bs-warning);
     border-radius: 10px;
     overflow: hidden;
 }
@@ -203,8 +203,8 @@ li {
 
 .login-container {
     width: 90%;
-    padding:0;
-    margin:0 auto;
+    padding: 0;
+    margin: 0 auto;
     padding: 10px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
@@ -214,9 +214,11 @@ li {
     color: white;
 }
 
-.add-part, .create-trip {
+.add-part,
+.create-trip {
     width: 210px;
 }
+
 @media screen and (max-width: 768px) {
 
     .home-filter-group {
@@ -237,12 +239,19 @@ li {
 }
 
 @media screen and (max-width: 600px) {
-    .show-details, .edit-details,.remove-details {
+
+    .show-details,
+    .edit-details,
+    .remove-details {
         padding: 0.5rem;
     }
 }
+
 @media screen and (max-width: 380px) {
-    .show-details, .edit-details,.remove-details {
+
+    .show-details,
+    .edit-details,
+    .remove-details {
         padding: 0.3rem;
     }
 }

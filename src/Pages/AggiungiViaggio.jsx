@@ -53,12 +53,13 @@ export default function AggiungiViaggio() {
     };
 
     const handlePartecipanteChange = (e) => {
-        const { name, value } = e.target;
-        setPartecipante({
-            ...partecipante,
-            [name]: value
-        })
-    };
+  const { name, value } = e.target;
+  setPartecipante((prev) => ({
+    ...prev,
+    [name]: value
+  }));
+};
+
 
     const aggiungiPartecipante = () => {
         const newPartecipante = {
