@@ -72,24 +72,24 @@ const TripList = () => {
                     onChange={(e) => setCercaPartecipante(e.target.value)}
                 />
 
-                <ul className="list-group my-5">
+                <ul className="list-group my-5 d-flex gap-2">
                     {filtroRicercaUtente.length > 0 ? (
                         filtroRicercaUtente.map((curPartecipante) => (
                             <>
                                 <li key={curPartecipante.id} className="list-group-item d-flex justify-content-between align-items-center">
                                     <span>{curPartecipante.nome} {curPartecipante.cognome}</span>
 
-                                    <div className="edit-group d-flex gap-1">
+                                    <div className="edit-group d-flex gap-1 px-1 py-1">
 
-                                        <button className="btn btn-primary" onClick={() => apriModal(curPartecipante)}>
+                                        <button className="btn btn-primary show-details" onClick={() => apriModal(curPartecipante)}>
                                             Dettagli
                                         </button>
-                                        <button className="btn btn-warning" onClick={() => {
+                                        <button className="btn btn-warning edit-details" onClick={() => {
                                             setEditPartecipanteId(prevId =>
                                                 prevId === curPartecipante.id ? null : curPartecipante.id
                                             );
                                         }}><i className="fa-solid fa-pen-to-square"></i></button>
-                                        <button className="btn btn-danger" onClick={()=>handleDelete(curPartecipante.id)}><i className="fa-solid fa-trash-can"></i></button>
+                                        <button className="btn btn-danger remove-details" onClick={()=>handleDelete(curPartecipante.id)}><i className="fa-solid fa-trash-can"></i></button>
 
                                     </div>
 

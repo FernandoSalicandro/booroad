@@ -88,7 +88,7 @@ export default function Homepage() {
                 </div>
                 <hr />
 
-                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 g-4">
                     {viaggiFiltrati.map((curViaggio) => (
                         <div className="col" key={curViaggio.id}>
                             <ViaggiCard viaggio={curViaggio} />

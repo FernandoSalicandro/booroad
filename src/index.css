@@ -213,6 +213,12 @@ li {
     }
 }
 
+@media screen and (max-width: 600px) {
+    .show-details, .edit-details,.remove-details {
+        padding: 0.5rem;
+    }
+}
+
 @media screen and (max-width: 430px) {
     .modal .left-col {
         width: 60%;
