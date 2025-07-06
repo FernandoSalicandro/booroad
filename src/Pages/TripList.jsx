@@ -163,7 +163,7 @@ const TripList = () => {
             <li className="list-group-item text-center">Nessun partecipante</li>
           )}
         </ul>
-        <button className="btn btn-success" onClick={() => setAggiungiPartecipante(!aggiungiPartecipante)}>
+        <button className="btn btn-outline-primary mb-2" onClick={() => setAggiungiPartecipante(!aggiungiPartecipante)}>
           Aggiungi Partecipante
         </button>
         {aggiungiPartecipante && (
@@ -173,7 +173,7 @@ const TripList = () => {
               handlePartecipanteChange={handleNuovoPartecipante} 
             />
             <button 
-              className="btn btn-success"
+              className="btn btn-outline-primary"
               onClick={handleAggiungi}
             >
               Aggiungi
