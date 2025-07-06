@@ -2,16 +2,19 @@ import { useState, useContext } from "react";
 import { ViaggiContext } from "../GlobalContext/ViaggiContext.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 import ModaleViaggiatore from "../Components/ModaleViaggiatore.jsx";
+import FormAggiungiPartecipante from "../Components/formAggiungiPartecipante.jsx";
 
 const TripList = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const { viaggi } = useContext(ViaggiContext); // Usa il context invece di importare i dati
-    const viaggio = viaggi.find(v => v.id === id); // Rimuovi toString() se gli ID sono già stringhe
+    const { viaggi, setViaggi } = useContext(ViaggiContext);
+    const viaggio = viaggi.find(v => v.id === id); 
     const [partecipanti, setPartecipanti] = useState(viaggio ? viaggio.partecipanti : []);
     const [cercaPartecipante, setCercaPartecipante] = useState("");
     const [showModal, setShowModal] = useState(false);
     const [utenteSelezionato, setUtenteSelezionato] = useState(null);
+    const [editPartecipanteId, setEditPartecipanteId] = useState(null);
+
 
     const filtroRicercaUtente = partecipanti.filter(partecipante =>
         `${partecipante.nome} ${partecipante.cognome}`.toLowerCase().trim().includes(cercaPartecipante.toLowerCase().trim())
@@ -27,13 +30,26 @@ const TripList = () => {
         setUtenteSelezionato(null);
     };
 
+    const handlePartecipanteChange = (id, updatedFields) => {
+        setPartecipanti(prevPartecipanti =>
+            prevPartecipanti.map(partecipante =>
+                partecipante.id === id ? { ...partecipante, ...updatedFields } : partecipante
+            )
+        );
+
+    };
+
+    const handleDelete = (idPartecipante) => {
+        setPartecipanti(prevPartecipanti => prevPartecipanti.filter(partecipante => partecipante.id !== idPartecipante))
+    }
+
     return (
         <>
             <img
                 src={`../${viaggio?.poster}`}
                 alt="poster"
                 className="mb-3 image-fluid banner-img"
-                style={{ width: '100vw'}}
+                style={{ width: '100vw' }}
             />
 
             <div className="container my-5">
@@ -58,13 +74,40 @@ const TripList = () => {
 
                 <ul className="list-group my-5">
                     {filtroRicercaUtente.length > 0 ? (
-                        filtroRicercaUtente.map((curPartecipante, index) => (
-                            <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
-                                <span>{curPartecipante.nome} {curPartecipante.cognome}</span>
-                                <button className="btn btn-primary" onClick={() => apriModal(curPartecipante)}>
-                                    Dettagli
-                                </button>
-                            </li>
+                        filtroRicercaUtente.map((curPartecipante) => (
+                            <>
+                                <li key={curPartecipante.id} className="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>{curPartecipante.nome} {curPartecipante.cognome}</span>
+
+                                    <div className="edit-group d-flex gap-1">
+
+                                        <button className="btn btn-primary" onClick={() => apriModal(curPartecipante)}>
+                                            Dettagli
+                                        </button>
+                                        <button className="btn btn-warning" onClick={() => {
+                                            setEditPartecipanteId(prevId =>
+                                                prevId === curPartecipante.id ? null : curPartecipante.id
+                                            );
+                                        }}><i className="fa-solid fa-pen-to-square"></i></button>
+                                        <button className="btn btn-danger" onClick={()=>handleDelete(curPartecipante.id)}><i className="fa-solid fa-trash-can"></i></button>
+
+                                    </div>
+
+
+
+                                </li>
+                                {editPartecipanteId === curPartecipante.id && (
+                                    <li className="list-group-item">
+                                        <FormAggiungiPartecipante partecipante={curPartecipante} handlePartecipanteChange={(updatedFields) => handlePartecipanteChange(curPartecipante.id, updatedFields)} />
+                                        <button className="btn btn-success mt-2" onClick={()=>setEditPartecipanteId(null)}>Salva Modifiche</button>
+                                    </li>
+                                )}
+
+
+
+                            </>
+
+
                         ))
                     ) : (
                         <li className="list-group-item text-center">Nessun partecipante</li>

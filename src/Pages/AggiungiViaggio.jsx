@@ -92,7 +92,7 @@ export default function AggiungiViaggio() {
         };
 
         setViaggi([...viaggi, viaggioCompleto]);
-        navigate('/');
+        navigate(`/trip/${viaggioCompleto.id}`);
     };
 
     return (

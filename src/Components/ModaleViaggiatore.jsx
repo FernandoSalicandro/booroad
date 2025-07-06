@@ -1,3 +1,5 @@
+
+
 export default function ModaleViaggiatore({ utente, apriModal, chiudiModal }) {
     const { nome, cognome, codiceFiscale, email, telefono, contattoEmergenza, citta, dataDiNascita } = utente;
     return (
