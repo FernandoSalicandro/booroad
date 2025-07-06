@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from './Pages/Login.jsx'
 import Homepage from './Pages/HomePage.jsx'
 import GuestLayout from './Layout/GuestLayout.jsx';
 import { ViaggiProvider } from './GlobalContext/ViaggiContext.jsx';
@@ -15,12 +16,15 @@ function App() {
 
         <BrowserRouter>
         <ScrollTop />
-          <GuestLayout />
           <Routes>
-            <Route path="/" element={<Homepage />} />
+            <Route path="/" element={<Login />} />
+            <Route element={<GuestLayout />}>
             <Route path="/home" element={<Homepage />} />
             <Route path="/aggiungiviaggio" element={<AggiungiViaggio />} />
             <Route path="/trip/:id" element={<TripList />} />
+            
+            </Route>
+            
           </Routes>
         </BrowserRouter>
         
