@@ -53,8 +53,8 @@ const TripList = () => {
             />
 
             <div className="container my-5">
-                <button className="btn btn-secondary mb-3" onClick={() => navigate(-1)}>
-                    ← Torna Indietro
+                <button className="btn btn-secondary mb-3" onClick={() => navigate('/home')}>
+                    ← Vai Alla Home
                 </button>
                 {viaggio ? (
                     <>

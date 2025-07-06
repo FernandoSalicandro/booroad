@@ -22,7 +22,7 @@ export default function ModaleViaggiatore({ utente, apriModal, chiudiModal }) {
                         <p><strong>Codice Fiscale:</strong> {codiceFiscale}</p>
                         <p> <strong>Email:</strong>  {email}</p>
                         <div className="d-flex justify-content-between align-items-center">
-                            <p className="d-flex justify-content-between align-items-center left-col">
+                            <p className="d-flex justify-content-between align-items-center left-col flex-wrap">
                              <strong>Telefono:</strong> {telefono}
                             </p>
                             <a href={`tel:${telefono}`} className="btn btn-success m-3 call-now px-3">
@@ -31,7 +31,7 @@ export default function ModaleViaggiatore({ utente, apriModal, chiudiModal }) {
                         </div>
 
                         <div className="d-flex justify-content-between align-items-center">
-                            <p className="d-flex justify-content-between align-items-center left-col">
+                            <p className="d-flex justify-content-between align-items-center left-col flex-wrap">
                                <strong>Contatto Emergenza:</strong>  {contattoEmergenza}
                             </p>
                             <a href={`tel:${contattoEmergenza}`} className="btn btn-danger m-3 call-now px-3">
