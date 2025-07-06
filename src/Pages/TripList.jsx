@@ -11,10 +11,19 @@ const TripList = () => {
   const viaggio = viaggi.find((v) => v.id === id);
   const [partecipanti, setPartecipanti] = useState(viaggio ? viaggio.partecipanti : []);
   const [cercaPartecipante, setCercaPartecipante] = useState("");
+  const [aggiungiPartecipante, setAggiungiPartecipante] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [utenteSelezionato, setUtenteSelezionato] = useState(null);
   const [editPartecipanteId, setEditPartecipanteId] = useState(null);
   const [editFormData, setEditFormData] = useState(null);
+  const [nuovoPartecipante, setNuovoPartecipante] = useState({
+    id: Date.now().toString(),
+    nome: '',
+    cognome: '',
+    email: '',
+    telefono: '',
+    contattoEmergenza: ''
+  });
 
   const filtroRicercaUtente = partecipanti.filter((partecipante) =>
     `${partecipante.nome} ${partecipante.cognome}`.toLowerCase().includes(cercaPartecipante.toLowerCase())
@@ -40,6 +49,24 @@ const TripList = () => {
 
   const handleDelete = (idPartecipante) => {
     setPartecipanti((prevPartecipanti) => prevPartecipanti.filter((p) => p.id !== idPartecipante));
+  };
+
+  const handleNuovoPartecipante = (e) => {
+    const { name, value } = e.target;
+    setNuovoPartecipante(prev => ({...prev, [name]: value}));
+  };
+
+  const handleAggiungi = () => {
+    setPartecipanti(prev => [...prev, nuovoPartecipante]);
+    setNuovoPartecipante({
+      id: Date.now().toString(),
+      nome: '',
+      cognome: '',
+      email: '',
+      telefono: '',
+      contattoEmergenza: ''
+    });
+    setAggiungiPartecipante(false);
   };
 
   return (
@@ -136,6 +163,23 @@ const TripList = () => {
             <li className="list-group-item text-center">Nessun partecipante</li>
           )}
         </ul>
+        <button className="btn btn-success" onClick={() => setAggiungiPartecipante(!aggiungiPartecipante)}>
+          Aggiungi Partecipante
+        </button>
+        {aggiungiPartecipante && (
+          <> 
+            <FormAggiungiPartecipante 
+              partecipante={nuovoPartecipante} 
+              handlePartecipanteChange={handleNuovoPartecipante} 
+            />
+            <button 
+              className="btn btn-success"
+              onClick={handleAggiungi}
+            >
+              Aggiungi
+            </button>
+          </>
+        )}
       </div>
 
       {utenteSelezionato && showModal && (
