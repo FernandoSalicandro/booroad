@@ -39,12 +39,13 @@ export default function FormAggiungiPartecipante({ partecipante, handlePartecipa
                 <input type="tel" className="form-control" placeholder="Contatto Emergenza" name="contattoEmergenza" value={contattoEmergenza} onChange={handleChange} />
             </div>
 
-           
             <div className="col-md-6 mb-2">
                 <input type="text" className="form-control" placeholder="Città di Residenza" name="citta" value={citta || ''} onChange={handleChange} />
             </div>
             <div className="col-md-6 mb-2">
+                
                 <input type="date" className="form-control" placeholder="Data di Nascita" name="dataDiNascita" value={dataDiNascita || ''} onChange={handleChange} />
+                <label className="form-label">Data di Nascita</label>
             </div>
         </>
     );
