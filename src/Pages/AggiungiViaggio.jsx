@@ -104,10 +104,10 @@ export default function AggiungiViaggio() {
                     <FormAggiungiViaggio viaggio={nuovoViaggio} handleChange={handleChange} handleNumeriEmergenzaChange={handleNumeriEmergenzaChange} />
                     <div className="wrapper">
 
-                        <button type="button" className="btn btn-primary" onClick={() => setAggiungiPartecipanti(!aggiungiPartecipanti)}>
+                        <button type="button" className="btn btn-primary add-part" onClick={() => setAggiungiPartecipanti(!aggiungiPartecipanti)}>
                             Aggiungi Partecipanti
                         </button>
-                        <button type="submit" className="btn btn-success">
+                        <button type="submit" className="btn btn-success create-trip">
                             Crea Viaggio
                         </button>
 

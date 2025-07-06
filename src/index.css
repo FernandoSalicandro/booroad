@@ -213,6 +213,10 @@ li {
     background-color: rgba(54, 53, 53, 0.063);
     color: white;
 }
+
+.add-part, .create-trip {
+    width: 210px;
+}
 @media screen and (max-width: 768px) {
 
     .home-filter-group {
