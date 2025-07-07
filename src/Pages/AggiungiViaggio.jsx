@@ -3,6 +3,7 @@ import { ViaggiContext } from '../GlobalContext/ViaggiContext.jsx';
 import { useNavigate } from 'react-router-dom';
 import FormAggiungiViaggio from '../Components/formAggiungiViaggio.jsx';
 import FormAggiungiPartecipante from '../Components/formAggiungiPartecipante.jsx';
+import { p } from 'framer-motion/client';
 
 export default function AggiungiViaggio() {
     const { viaggi, setViaggi } = useContext(ViaggiContext);
@@ -53,12 +54,12 @@ export default function AggiungiViaggio() {
     };
 
     const handlePartecipanteChange = (e) => {
-  const { name, value } = e.target;
-  setPartecipante((prev) => ({
-    ...prev,
-    [name]: value
-  }));
-};
+        const { name, value } = e.target;
+        setPartecipante((prev) => ({
+            ...prev,
+            [name]: value
+        }));
+    };
 
 
     const aggiungiPartecipante = () => {
@@ -134,7 +135,8 @@ export default function AggiungiViaggio() {
                                     {nuovoViaggio.partecipanti.map(partecipante => (
                                         <li key={partecipante.id} className="list-group-item">
                                             <div className="d-flex justify-content-between align-items-center">
-                                                {partecipante.nome} {partecipante.cognome} – {partecipante.email}<div className='aggiunto'>Aggiunto</div>
+                                                {(partecipante.nome && partecipante.cognome) ? `${partecipante.nome} ${partecipante.cognome}` : '-'}
+                                                <div className='aggiunto'>Aggiunto</div>
                                             </div>
 
                                         </li>
